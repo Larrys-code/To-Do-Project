@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":"AAAA,EAEI,SADA,SACA","sources":["webpack://web-template/./src/styles.css"],"sourcesContent":["* {\n    padding: 0px;\n    margin: 0px;\n}"],"names":[],"sourceRoot":""}
