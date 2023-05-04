@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    index: "./src/app.js",
+    index: "./src/js/app.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
