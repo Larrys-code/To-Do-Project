@@ -5,6 +5,7 @@ export default class ToDo {
     description,
     due = false,
     priority = 0,
+    groups = [],
     checklist = []
   ) {
     this.name = name;
@@ -12,6 +13,7 @@ export default class ToDo {
     this.description = description;
     this.due = due;
     this.priority = priority;
+    this.groups = groups;
     this.checklist = checklist;
   }
 
@@ -32,10 +34,25 @@ export default class ToDo {
       case "priority":
         this.priority = settings;
         break;
+      case "groups":
+        this.groups = settings;
+        break;
       case "checklist":
         this.checklist = settings;
         break;
       default:
     }
+  };
+
+  output = () => {
+    const outputObj = {
+      name: this.name,
+      description: this.description,
+      due: this.due,
+      priority: this.priority,
+      groups: this.groups,
+      checklist: this.checklist,
+    };
+    return outputObj;
   };
 }
