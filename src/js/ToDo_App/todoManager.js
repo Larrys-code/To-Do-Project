@@ -3,8 +3,25 @@ import ToDo from "./todo";
 const allToDos = [];
 let idIterable = 0;
 
-export function getAll() {
-  return JSON.parse(JSON.stringify(allToDos));
+export function getAll(group = "") {
+  if (!group) return JSON.parse(JSON.stringify(allToDos));
+  const groupArray = allToDos.filter((todo) => {
+    const { groups } = todo;
+    return groups.includes(group);
+  });
+  return JSON.parse(JSON.stringify(groupArray));
+}
+
+export function getGroups() {
+  const groupList = [];
+  allToDos.forEach((todo) => {
+    if (!todo.groups) return;
+    const { groups } = todo;
+    groups.forEach((group) => {
+      if (!groupList.includes(group)) groupList.push(group);
+    });
+  });
+  return JSON.parse(JSON.stringify(groupList));
 }
 
 function getToDo(id) {
@@ -37,4 +54,9 @@ export function addToDo(
   allToDos.push(newToDo);
   idIterable += 1;
   return idIterable - 1;
+}
+
+export function removeToDo(id) {
+  const indexOfToDo = allToDos.findIndex((todo) => todo.id === id);
+  allToDos.splice(indexOfToDo, 1);
 }
